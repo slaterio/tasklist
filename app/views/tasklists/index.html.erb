@@ -13,7 +13,7 @@
 
   <tbody>
     <% @tasklists.each do |tasklist| %>
-      <tr>
+      <tr id="<%= dom_id(tasklist) %>">
         <td><%= tasklist.title %></td>
         <td><%= tasklist.description %></td>
         <td><%= link_to 'Show', tasklist %></td>
