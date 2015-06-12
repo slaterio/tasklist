@@ -4,7 +4,6 @@ describe "deleting tasklists" do
 
 	let!(:tasklist) { Tasklist.create(title: "Groceries", description: "Grocery list.") }
 
-
 	it "is successful when clicking destroy link" do
 
 	visit "/tasklists"
@@ -16,6 +15,5 @@ describe "deleting tasklists" do
 		expect(Tasklist.count).to eq(0)
 
 	end
-
 
 end
