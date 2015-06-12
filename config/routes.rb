@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tasklist_items/index'
+
   resources :tasklists
 
   root 'tasklists#index'
