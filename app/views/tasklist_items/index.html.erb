@@ -1,2 +1,8 @@
-<h1>TasklistItems#index</h1>
+<h1><%= @tasklist.title %></h1>
 <p>Find me in app/views/tasklist_items/index.html.erb</p>
+
+<ul class="tasklist_items">
+	<%= @tasklist.tasklist_items.each do |tasklist_item| %>
+	<li><%= tasklist_item.content %></li>
+	<% end %>
+</ul>
