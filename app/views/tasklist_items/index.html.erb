@@ -1,8 +1,11 @@
 <h1><%= @tasklist.title %></h1>
-<p>Find me in app/views/tasklist_items/index.html.erb</p>
 
 <ul class="tasklist_items">
 	<%= @tasklist.tasklist_items.each do |tasklist_item| %>
 	<li><%= tasklist_item.content %></li>
 	<% end %>
 </ul>
+
+<p>
+	<%= link_to "New Tasklist Item", new_tasklist_tasklist_item_path %>
+</p>

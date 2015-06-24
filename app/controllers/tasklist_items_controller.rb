@@ -2,4 +2,27 @@ class TasklistItemsController < ApplicationController
   def index
   		@tasklist = Tasklist.find(params[:tasklist_id])
   end
+
+  def new
+  	@tasklist = Tasklist.find(params[:tasklist_id])
+  	@tasklist_item = @tasklist.tasklist_items.new
+  end
+
+  def create
+  	@tasklist = Tasklist.find(params[:tasklist_id])
+  	@tasklist_item = @tasklist.tasklist_items.new(tasklist_item_params)
+  	if @tasklist_item.save
+  		flash[:success] = "Added tasklist item."
+  		redirect_to tasklist_tasklist_items_path
+  	else
+  		flash[:error] = "There was a problem adding that tasklist item."
+  		render action: :new
+  	end
+  end
+
+  private
+  def tasklist_item_params
+  	params[:tasklist_item].permit(:content)
+  end
+
 end
