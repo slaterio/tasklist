@@ -21,6 +21,28 @@ it "is successful with valid content" do
 	end
 end
 
+it "displays an error with no content" do
+	visit_tasklist(tasklist)
+	click_link "New Tasklist Item"
+	fill_in "Content", with: ""
+	click_button "Save"
+	within("div.flash") do
+		expect(page).to have_content("There was a problem adding that tasklist item.")
+	end
+	expect(page).to have_content("Content can't be blank")
+end
+
+it "displays an error with content less than 2 characters long" do
+	visit_tasklist(tasklist)
+	click_link "New Tasklist Item"
+	fill_in "Content", with: "1"
+	click_button "Save"
+	within("div.flash") do
+		expect(page).to have_content("There was a problem adding that tasklist item.")
+	end
+	expect(page).to have_content("Content is too short")
+end
+
 
 
 end
