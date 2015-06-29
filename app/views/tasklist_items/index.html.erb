@@ -2,7 +2,10 @@
 
 <ul class="tasklist_items">
 	<%= @tasklist.tasklist_items.each do |tasklist_item| %>
-	<li><%= tasklist_item.content %></li>
+	<li id="<%= dom_id(tasklist_item) %>">
+		<%= tasklist_item.content %>
+		<%= link_to "Edit", edit_tasklist_tasklist_item_path(tasklist_item) %>
+	</li>
 	<% end %>
 </ul>
 

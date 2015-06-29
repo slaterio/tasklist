@@ -20,6 +20,18 @@ class TasklistItemsController < ApplicationController
   	end
   end
 
+  def edit
+    @tasklist = Tasklist.find(params[:tasklist_id])
+    @tasklist_item = @tasklist.tasklist_items.find(params[:id])
+  end
+
+  
+
+  def url_options
+    { tasklist_id: params [:tasklist_id] }.merge(super)
+  end
+
+
   private
   def tasklist_item_params
   	params[:tasklist_item].permit(:content)
