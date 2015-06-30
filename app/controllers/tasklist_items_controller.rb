@@ -25,6 +25,17 @@ class TasklistItemsController < ApplicationController
     @tasklist_item = @tasklist.tasklist_items.find(params[:id])
   end
 
+  def update
+    @tasklist = Tasklist.find(params[:tasklist_id])
+    @tasklist_item = @tasklist.tasklist_items.find(params[:id])
+      if @tasklist_item.update_attributes(tasklist_item_params)
+        flash[:success] = "Saved tasklist item."
+        redirect_to tasklist_tasklist_items_path
+      else
+        flash[:error] = "That tasklist item could not be saved."
+        render action: :edit
+      end
+  end
   
 
   def url_options

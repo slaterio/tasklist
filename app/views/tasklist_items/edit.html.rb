@@ -16,4 +16,5 @@
 	<%= form.text_field :content %>
 
 	<%= form.submit "Save" %>
+
 <% end %>

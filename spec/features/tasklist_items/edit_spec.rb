@@ -13,14 +13,14 @@ let!(:tasklist_item) { tasklist.tasklist_items.create(content: "Milk") }
 
 	it "is successful with valid content" do
 		visit_tasklist(tasklist)
-		within("#tasklist_items_#{tasklist_item.id}") do
+		within("#tasklist_item_#{tasklist_item.id}") do
 			click_link "Edit"
 		end
 		fill_in "Content", with: "Lots of Milk"
 		click_button "Save"
-		expect(page).to have_content("Saved tasklist item")
+		expect(page).to have_content("Saved tasklist item.")
 		tasklist_item.reload
-		expect(tasklist_item.title).to eq("Lots of Milk")
+		expect(tasklist_item.content).to eq("Lots of Milk")
 	end
 
 end
